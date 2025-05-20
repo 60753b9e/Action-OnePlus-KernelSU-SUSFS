@@ -9,7 +9,7 @@ on:
       FEIL:
         description: "配置文件"
         required: true
-        default: 'oneplus_ace3'
+        default: 'oneplus_ace3_v'
       CPUD:
         description: "处理器代号"
         required: true
@@ -25,7 +25,7 @@ on:
       KERNEL_NAME:
         description: "自定义内核名称"
         required: true
-        default: '-android13-11-o-g54d4b575ebf6'
+        default: '-NSPrivate'
       kernelsu_variant:
         description: "选择 KSU"
         required: true
@@ -166,7 +166,7 @@ jobs:
             cp -r ../SukiSU_patch/other/zram/lz4k_oplus ./common/lib/
           fi
           
-          cd ./common
+          cd ../common
           patch -p1 < 50_add_susfs_in_gki-${{ github.event.inputs.ANDROID_VERSION }}-${{ github.event.inputs.KERNEL_VERSION }}.patch || true
 
       - name: Apply VFS Hooks Patches
