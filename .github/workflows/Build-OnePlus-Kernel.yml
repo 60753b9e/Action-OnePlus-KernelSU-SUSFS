@@ -66,6 +66,7 @@ jobs:
         with:
           root-reserve-mb: 8192
           temp-reserve-mb: 8192
+          swap-size-mb: 8192
           remove-dotnet: 'true'
           remove-android: 'true'
           remove-haskell: 'true'
@@ -301,7 +302,7 @@ jobs:
       - name: Add make name
         run: |
          cd kernel_workspace/kernel_platform
-         sed -i '$s|echo "\$res"|echo "\${{ github.event.inputs.KERNEL_NAME }}"|' ./common/scripts/setlocalversion
+         sed -i '$s|echo "\$res"|echo "\$res-NSPrivate"|' ./common/scripts/setlocalversion
          sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
   
       - name: Build kernel
